@@ -1,0 +1,21 @@
+@media (min-width: 599px) {
+    .navBtn{
+        display: none;
+    }
+
+    .header{
+        display: block;
+    }
+}
+
+@media (max-width: 599px) {
+    .navBtn{
+        display: block;
+    }
+
+    .header{
+        display: none;
+    }
+}
+
+

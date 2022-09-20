@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Furama Resort</title>
+    <link rel="stylesheet" href="nav_bar.css">
+    <link rel="stylesheet" href="nav_bar_home_responsive.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <script src="https://kit.fontawesome.com/9cad70f17b.js" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Anonymous Pro' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Courier Prime' rel='stylesheet'>
+</head>
+<style>
+    .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+    }
+
+    .header_link {
+        text-decoration: none;
+        color: #ffffff;
+        padding: 0 50px;
+    }
+</style>
+<body>
+<video loop muted autoplay width="100%">
+    <source src="videos/Boat - 44549.mp4" type="video/mp4">
+</video>
+<div class="header">
+    <div class="d-flex justify-content-center mx-auto w-100 pt-4"  style="font-family: Anonymous Pro,serif">
+        <a href="#" class=" header_link ">Customer</a>
+        <a href="#" class=" header_link ">Employee</a>
+        <a href="#" class=" header_link "><h3  style="font-family: Courier Prime,serif">FURAMA</h3></a>
+        <a href="#" class=" header_link ">Service</a>
+        <a href="#" class=" header_link ">Contract</a>
+    </div>
+</div>
+<nav>
+    <button class="navBtn" type="button">
+        <span class="material-symbols-outlined">menu</span>
+    </button>
+    <div class="nav_overlay"></div>
+    <div class="side_nav_bar">
+        <a href="#" class="side_nav_Bar_link "><h5>FURAMA</h5></a>
+        <a href="#" class="side_nav_Bar_link ">Customer</a>
+        <a href="#" class="side_nav_Bar_link ">Employee</a>
+        <a href="#" class="side_nav_Bar_link ">Service</a>
+        <a href="#" class="side_nav_Bar_link ">Contract</a>
+    </div>
+</nav>
+<footer class="text-center text-lg-start text-white" style="background-color: #00787b">
+    <div class="container p-4 pb-0">
+        <section>
+            <div class="row">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Furama Da Nang</h6>
+                    <p>
+                        Overlooking the long stretch of wide white sand on Danang Beach, Furama Resort Danang is a
+                        gateway to three World Heritage Sites of Hoi An (20 minutes), My Son (90 minutes) and Hue (2
+                        hours).
+                    </p>
+                </div>
+                <hr class="w-100 clearfix d-md-none"/>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Service</h6>
+                    <p class="text-white">Rooms & Suites </p>
+                    <p class="text-white">Spa & Fitness </p>
+                    <p class="text-white">Meeting & Evens </p>
+                    <p class="text-white">Villa </p>
+                </div>
+                <hr class="w-100 clearfix d-md-none"/>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Links</h6>
+                    <p class="text-white">News</p>
+                    <p class="text-white">Rack Rate</p>
+                    <p class="text-white">Lifestyle Blog</p>
+                    <p class="text-white">Help</p>
+                </div>
+                <hr class="w-100 clearfix d-md-none"/>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                    <p><i class="fas fa-home mr-3"></i> 103 - 105 Vo Nguyen Giap Street, Khue My Ward, Ngu Hanh Son
+                        District, Danang City, Vietnam</p>
+                    <p><i class="fas fa-envelope mr-3"></i> reservation@furamavietnam.com</p>
+                    <p><i class="fas fa-phone mr-3"></i> 84-236-3847 333/888</p>
+                    <p><i class="fas fa-print mr-3"></i> 84-236-3847 666</p>
+                </div>
+            </div>
+        </section>
+        <hr class="my-3">
+        <section class="p-3 pt-0">
+            <div class="row d-flex align-items-center">
+                <div class="col-md-7 col-lg-8 text-center text-md-start">
+                    <div class="p-3">© 2020 Copyright:
+                        <a class="text-white" href="#">Long Đẹp Trai</a>
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+                    <a class="btn btn-outline-light btn-floating m-1 text-white" role="button">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="btn btn-outline-light btn-floating m-1 text-white" role="button">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-outline-light btn-floating m-1 text-white" role="button">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</footer>
+
+<script src="js/bootstrap.js"></script>
+<script>
+    const sideNavBar = document.querySelector(".side_nav_bar");
+    const navOverlay = document.querySelector(".nav_overlay");
+    const navButton = document.querySelector(".navBtn");
+
+    navButton.addEventListener("click", function () {
+        sideNavBar.classList.add("side_navBar_open");
+        navOverlay.classList.add("nav_overlay_open");
+        navButton.classList.add("navBtn_fade");
+    })
+
+    navOverlay.addEventListener("click", function () {
+        sideNavBar.classList.remove("side_navBar_open");
+        navOverlay.classList.remove("nav_overlay_open");
+        navButton.classList.remove("navBtn_fade");
+    })
+</script>
+</body>
+</html>
