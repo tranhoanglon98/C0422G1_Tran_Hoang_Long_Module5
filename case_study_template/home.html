@@ -5,39 +5,35 @@
     <title>Furama Resort</title>
     <link rel="stylesheet" href="nav_bar.css">
     <link rel="stylesheet" href="nav_bar_home_responsive.css">
+    <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <script src="https://kit.fontawesome.com/9cad70f17b.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Anonymous Pro' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Courier Prime' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
 </head>
-<style>
-    .header {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 60px;
-    }
-
-    .header_link {
-        text-decoration: none;
-        color: #ffffff;
-        padding: 0 50px;
-    }
-</style>
 <body>
-<video loop muted autoplay width="100%">
-    <source src="videos/Boat - 44549.mp4" type="video/mp4">
-</video>
+<div class="position-relative align-items-center justify-content-end d-flex">
+    <video loop muted autoplay width="100%" class="d-inline-block">
+        <source src="videos/Boat - 44549.mp4" type="video/mp4">
+    </video>
+    <div class="slogan text-end">
+        <h1>Welcome to Furama</h1>
+        <h3>Enjoy A Luxury Experience</h3>
+        <p>Leave your worries behind</p>
+        <button class="btn-outline-light btn">Join us</button>
+        <button class="btn-outline-light btn">Login</button>
+    </div>
+</div>
 <div class="header">
-    <div class="d-flex justify-content-center mx-auto w-100 pt-4"  style="font-family: Anonymous Pro,serif">
-        <a href="#" class=" header_link ">Customer</a>
-        <a href="#" class=" header_link ">Employee</a>
-        <a href="#" class=" header_link "><h3  style="font-family: Courier Prime,serif">FURAMA</h3></a>
-        <a href="#" class=" header_link ">Service</a>
-        <a href="#" class=" header_link ">Contract</a>
+    <div class="d-flex justify-content-center mx-auto w-100 row mt-4"  style="font-family: Anonymous Pro,serif">
+        <a href="#" class="col-lg-2 col-md-2 header_link ">Customer</a>
+        <a href="#" class="col-lg-2 col-md-2 header_link ">Employee</a>
+        <a href="#" class="col-lg-2 col-md-2 header_link "><h3  style="font-family: Courier Prime,serif">Home</h3></a>
+        <a href="#" class="col-lg-2 col-md-2 header_link ">Service</a>
+        <a href="#" class="col-lg-2 col-md-2 header_link ">Contract</a>
     </div>
 </div>
 <nav>
@@ -45,8 +41,8 @@
         <span class="material-symbols-outlined">menu</span>
     </button>
     <div class="nav_overlay"></div>
-    <div class="side_nav_bar">
-        <a href="#" class="side_nav_Bar_link "><h5>FURAMA</h5></a>
+    <div class="side_nav_bar"  style="font-family: Anonymous Pro,serif">
+        <a href="#" class="side_nav_Bar_link "><h4  style="font-family: Courier Prime,serif">HOME</h4></a>
         <a href="#" class="side_nav_Bar_link ">Customer</a>
         <a href="#" class="side_nav_Bar_link ">Employee</a>
         <a href="#" class="side_nav_Bar_link ">Service</a>

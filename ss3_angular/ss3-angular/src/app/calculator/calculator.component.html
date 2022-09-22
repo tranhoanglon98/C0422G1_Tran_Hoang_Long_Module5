@@ -1,0 +1,22 @@
+<div class="mx-auto w-50">
+  <h3 class="text-center">CALCULATOR</h3>
+  <div>
+    <label for="num1" >First number:</label>
+    <input #num1 id="num1" type="text" class="form-control"
+           (change)="calculate(num1.value,num2.value,operator.value)">
+    <p>Operator</p>
+    <select #operator class="form-select"
+            (change)="calculate(num1.value,num2.value,operator.value)">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <label for="num2">Second number:</label>
+    <input #num2 id="num2" type="text" class="form-control col-lg-3"
+           (change)="calculate(num1.value,num2.value,operator.value)">
+  </div>
+  <div>
+    <h4>Result: {{result}}</h4>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="mx-auto w-50">
+  <p [ngStyle]="{'color': color}">Choose your color</p>
+  <select [style.color]="color" [(ngModel)]="color">
+    <option value="black" style="color: black">&#9830;black</option>
+    <option value="red" style="color: red">&#9830;red</option>
+    <option value="yellow" style="color: yellow">&#9830;yellow</option>
+    <option value="green" style="color: green">&#9830;green</option>
+    <option value="blue" style="color: blue">&#9830;blue</option>
+    <option value="deeppink" style="color: deeppink">&#9830;pink</option>
+    <option value="purple" style="color: purple">&#9830;purple</option>
+  </select>
+</div>
