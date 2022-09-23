@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Furama Resort</title>
     <link rel="stylesheet" href="nav_bar.css">
-    <link rel="stylesheet" href="nav_bar_home_responsive.css">
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet"
@@ -12,7 +11,8 @@
     <script src="https://kit.fontawesome.com/9cad70f17b.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Anonymous Pro' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Courier Prime' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Beau Rivage' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Abhaya Libre' rel='stylesheet'>
 </head>
 <body>
 <div class="position-relative align-items-center justify-content-end d-flex">
@@ -21,18 +21,19 @@
     </video>
     <div class="slogan text-end">
         <h1>Welcome to Furama</h1>
-        <h3>Enjoy A Luxury Experience</h3>
+        <h2>Enjoy A Luxury Experience</h2>
         <p>Leave your worries behind</p>
         <button class="btn-outline-light btn">Join us</button>
         <button class="btn-outline-light btn">Login</button>
     </div>
 </div>
 <div class="header">
+    <div class="header header_background"></div>
     <div class="d-flex justify-content-center mx-auto w-100 row mt-4"  style="font-family: Anonymous Pro,serif">
         <a href="#" class="col-lg-2 col-md-2 header_link ">Customer</a>
         <a href="#" class="col-lg-2 col-md-2 header_link ">Employee</a>
         <a href="#" class="col-lg-2 col-md-2 header_link "><h3  style="font-family: Courier Prime,serif">Home</h3></a>
-        <a href="#" class="col-lg-2 col-md-2 header_link ">Service</a>
+        <a href="service.html" class="col-lg-2 col-md-2 header_link ">Service</a>
         <a href="#" class="col-lg-2 col-md-2 header_link ">Contract</a>
     </div>
 </div>
@@ -45,17 +46,20 @@
         <a href="#" class="side_nav_Bar_link "><h4  style="font-family: Courier Prime,serif">HOME</h4></a>
         <a href="#" class="side_nav_Bar_link ">Customer</a>
         <a href="#" class="side_nav_Bar_link ">Employee</a>
-        <a href="#" class="side_nav_Bar_link ">Service</a>
+        <a href="service.html" class="side_nav_Bar_link ">Service</a>
         <a href="#" class="side_nav_Bar_link ">Contract</a>
     </div>
 </nav>
+<div style="height: 500px">
+
+</div>
 <footer class="text-center text-lg-start text-white" style="background-color: #00787b">
     <div class="container p-4 pb-0">
         <section>
             <div class="row">
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">Furama Da Nang</h6>
-                    <p>
+                    <p style="text-align: justify">
                         Overlooking the long stretch of wide white sand on Danang Beach, Furama Resort Danang is a
                         gateway to three World Heritage Sites of Hoi An (20 minutes), My Son (90 minutes) and Hue (2
                         hours).
@@ -114,7 +118,6 @@
         </section>
     </div>
 </footer>
-
 <script src="js/bootstrap.js"></script>
 <script>
     const sideNavBar = document.querySelector(".side_nav_bar");
@@ -132,6 +135,17 @@
         navOverlay.classList.remove("nav_overlay_open");
         navButton.classList.remove("navBtn_fade");
     })
+
+    function scrollPage(){
+        const headerRow = document.querySelector(".header_background");
+        if (window.pageYOffset > 0){
+            headerRow.classList.add("scrolled")
+        }else {
+            headerRow.classList.remove("scrolled")
+        }
+    }
+
+    window.addEventListener("scroll",scrollPage)
 </script>
 </body>
 </html>

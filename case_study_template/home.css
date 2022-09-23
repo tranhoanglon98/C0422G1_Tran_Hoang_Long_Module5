@@ -1,42 +1,13 @@
-body{
-    background: #07a7a7;
-}
-
-.header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-}
-
-.header_link {
-    text-decoration: none;
-    color: #ffffff;
-    padding: 0;
-    text-align: center;
-}
-
-.header_link:hover{
-    color: #ffffff;
-    font-size: 130%;
-    transition: font-size 0.2s;
-}
-
-.header_link h3:hover{
-    font-size: 150%;
-    transition: font-size 0.1s;
-}
-
 .slogan{
     position: absolute;
     top: 25%;
     margin-right: 4%;
     color: #ffffff;
-    font-family: Anonymous Pro, serif;
+    font-family: Abhaya Libre, serif;
+    font-size: 17px;
 }
 
 .slogan h1 {
-    font-size: 60px;
-    font-family: Playfair Display, serif;
+    font-size: 100px;
+    font-family: Beau Rivage, serif;
 }

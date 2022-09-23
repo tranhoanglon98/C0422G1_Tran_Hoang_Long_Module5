@@ -44,8 +44,7 @@
     margin: 35px 0;
     padding-left: 50px;
 }
-sdddsddfanhdnsna
-gggfmmd fvdnnnnn
+
 .side_nav_Bar_link:hover{
     color: #ffffff;
     font-size: 130%;
@@ -80,4 +79,61 @@ gggfmmd fvdnnnnn
 
 .navBtn_fade{
     opacity: 0;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+}
+
+.header_link {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 0;
+    text-align: center;
+}
+
+.header_link:hover{
+    color: #ffffff;
+    font-size: 130%;
+    transition: font-size 0.2s;
+}
+
+.header_link h3:hover{
+    font-size: 150%;
+    transition: font-size 0.1s;
+}
+
+.header_background{
+    background: #00787b;
+    opacity: 0;
+    z-index: -1;
+}
+
+.scrolled{
+    opacity: 100%;
+    transition: opacity 1s;
+}
+
+@media (min-width: 767px) {
+    .navBtn{
+        display: none;
+    }
+
+    .header{
+        display: block;
+    }
+}
+
+@media (max-width: 767px) {
+    .navBtn{
+        display: block;
+    }
+
+    .header{
+        display: none;
+    }
 }

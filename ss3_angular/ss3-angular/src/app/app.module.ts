@@ -8,14 +8,17 @@ import { BoostrapAngularComponent } from './boostrap-angular/boostrap-angular.co
 import {FormsModule} from "@angular/forms";
 import { CalculatorComponent } from './calculator/calculator.component';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
-
+import { NewsComponent } from './news/news.component';
+import { LikeComponent } from './news/like/like.component';
 @NgModule({
   declarations: [
     AppComponent,
     FontSizeComponent,
     BoostrapAngularComponent,
     CalculatorComponent,
-    ColorPickerComponent
+    ColorPickerComponent,
+    NewsComponent,
+    LikeComponent
   ],
     imports: [
         BrowserModule,
