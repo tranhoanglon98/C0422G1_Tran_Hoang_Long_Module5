@@ -19,16 +19,28 @@ export class HeaderComponent implements OnInit {
   scrollDown: boolean;
   onTop: boolean = true;
   yPosition = window.pageYOffset;
+  buttonColor: string
 
   @HostListener('window:scroll', ['$event'])
   scrolled() {
     this.scrollDown = window.pageYOffset > this.yPosition
     this.yPosition = window.pageYOffset
-    this.onTop  = window.pageYOffset == 0;
+    this.onTop = window.pageYOffset == 0;
+    let aboutUs = document.getElementById("aboutUs").offsetTop
+    console.log( 'about us: ' + aboutUs)
+    let footerPosition = document.getElementById("footer").offsetTop
+    if (this.yPosition > aboutUs - 100 && this.yPosition < footerPosition) {
+      this.buttonColor = "#00787b"
+    } else {
+      this.buttonColor = "white"
+    }
   }
 
-  constructor() {}
 
-  ngOnInit(): void {}
+  constructor() {
+  }
+
+  ngOnInit(): void {
+  }
 
 }

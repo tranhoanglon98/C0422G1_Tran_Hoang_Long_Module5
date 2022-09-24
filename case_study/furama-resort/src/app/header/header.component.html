@@ -13,7 +13,7 @@
   </div>
 </nav>
 <nav>
-  <button class="navBtn" type="button" (click)="clickMenuButton()">
+  <button class="navBtn" [ngStyle]="{color: buttonColor}" type="button" (click)="clickMenuButton()">
     <span class="material-symbols-outlined">menu</span>
   </button>
   <div class="nav_overlay" [ngClass]="showSideNavBar ? 'nav_overlay_open': ''"
