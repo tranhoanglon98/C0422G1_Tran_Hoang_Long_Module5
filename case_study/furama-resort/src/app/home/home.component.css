@@ -12,6 +12,21 @@
   font-family: Beau Rivage, serif;
 }
 
+.carouselImage{
+  border-radius: 15px;
+}
+
+.fadeText{
+  opacity: 0;
+  transform: translateY(70px);
+}
+
+.textScrolled{
+  opacity: 100%;
+  transform: translateY(0);
+  transition: all 1.5s;
+}
+
 @media only screen and (max-width: 767px) and (min-width: 600px) {
   .slogan {
     top: 15%;
