@@ -1,0 +1,34 @@
+<nav class="topNav">
+  <div class="header d-flex align-items-center" [ngClass]="scrollDown ? 'scrollDown' : ''">
+    <div class="header headerBackground" [ngClass]="onTop ? 'headerBgOnTop' : ''"></div>
+    <div class="d-flex justify-content-center mx-auto w-100 row" style="font-family: Anonymous Pro,serif">
+      <a href="#" class="col-lg-2 col-md-2 header_link ">Customer</a>
+      <a href="#" class="col-lg-2 col-md-2 header_link ">Employee</a>
+      <a href="#" class="col-lg-2 col-md-2 header_link ">
+        <h3 style="font-family: Courier Prime,serif; margin: 0">Home</h3>
+      </a>
+      <a href="#" class="col-lg-2 col-md-2 header_link ">Service</a>
+      <a href="#" class="col-lg-2 col-md-2 header_link ">Contract</a>
+    </div>
+  </div>
+</nav>
+<nav>
+  <button class="navBtn" type="button" (click)="clickMenuButton()">
+    <span class="material-symbols-outlined">menu</span>
+  </button>
+  <div class="nav_overlay" [ngClass]="showSideNavBar ? 'nav_overlay_open': ''"
+       (click)="clickMenuButton()"></div>
+  <div class="side_nav_bar" [ngClass]="showSideNavBar ? 'side_navBar_open': ''"
+       style="font-family: Anonymous Pro,serif">
+    <div class="d-flex justify-content-end">
+      <button style="background: none;font-size: 25px" (click)="clickMenuButton()">
+        <i class="fa-solid fa-xmark text-white"></i>
+      </button>
+    </div>
+    <a href="#" class="side_nav_Bar_link "><h4 style="font-family: Courier Prime,serif">HOME</h4></a>
+    <a href="#" class="side_nav_Bar_link ">Customer</a>
+    <a href="#" class="side_nav_Bar_link ">Employee</a>
+    <a href="#" class="side_nav_Bar_link ">Service</a>
+    <a href="#" class="side_nav_Bar_link ">Contract</a>
+  </div>
+</nav>

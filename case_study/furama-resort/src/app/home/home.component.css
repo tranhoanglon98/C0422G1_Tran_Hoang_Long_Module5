@@ -1,0 +1,61 @@
+.slogan {
+  position: absolute;
+  top: 25%;
+  margin-right: 4%;
+  color: #ffffff;
+  font-family: Abhaya Libre, serif;
+  font-size: 17px;
+}
+
+.slogan h1 {
+  font-size: 100px;
+  font-family: Beau Rivage, serif;
+}
+
+@media only screen and (max-width: 767px) and (min-width: 600px) {
+  .slogan {
+    top: 15%;
+  }
+
+  .slogan h1 {
+    font-size: 50px;
+  }
+
+  .slogan h2 {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 599px) and (min-width: 375px) {
+  .slogan {
+    font-size: 13px;
+    top: 15%;
+  }
+
+  .slogan h2 {
+    font-size: 17px;
+  }
+
+  .slogan h1 {
+    font-size: 40px;
+  }
+}
+
+@media only screen and (max-width: 374px) {
+  .slogan {
+    font-size: 13px;
+    top: 15%;
+  }
+
+  .slogan h2 {
+    font-size: 15px;
+  }
+
+  .slogan h1 {
+    font-size: 30px;
+  }
+
+  .btn {
+    font-size: 13px;
+  }
+}
