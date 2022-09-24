@@ -1,0 +1,69 @@
+<div class="position-relative d-flex justify-content-center text-white align-items-center">
+  <div class="position-absolute bg-black bg-opacity-25 w-100">
+    <h1 class="text-center p-3" style="font-size: 60px">Service</h1>
+  </div>
+  <img src="../../assets/images/facility1.jpg" width="100%"/>
+</div>
+<div class="container mt-5 mb-5 w-50">
+  <div class="mb-3">
+    <h5>Update service</h5>
+  </div>
+  <form action="">
+    <select id="facilityType" class="form-select mb-3" (change)="chooseFacilityType($event.target)"
+            aria-label="Default select example">
+      <option value="0">Choose facility type</option>
+      <option value="3">Room</option>
+      <option value="2">House</option>
+      <option value="1">Villa</option>
+    </select>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="serviceName" placeholder="name">
+      <label for="serviceName">Service name</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="area" placeholder="name">
+      <label for="area">Area</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="cost" placeholder="name">
+      <label for="cost">Cost</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="maxPeople" placeholder="name">
+      <label for="maxPeople">Max people</label>
+    </div>
+    <select id="rentType" class="form-select mb-3" aria-label="Default select example">
+      <option value="0">Choose rent type</option>
+      <option value="1">Year</option>
+      <option value="2">Month</option>
+      <option value="3">Day</option>
+      <option value="4">Hour</option>
+    </select>
+    <div class="form-floating mb-3" [ngClass]="isRoom ? 'showAdd' : 'hideAdd'">
+      <input type="text" class="form-control" id="facilityFree" placeholder="name">
+      <label for="facilityFree">Facility free</label>
+    </div>
+    <div class="form-floating mb-3" [ngClass]="(isHouse || isVilla) ? 'showAdd' : 'hideAdd'">
+      <input type="text" class="form-control" id="roomStandard" placeholder="name">
+      <label for="roomStandard">Room standard</label>
+    </div>
+    <div class="form-floating mb-3" [ngClass]="(isHouse || isVilla) ? 'showAdd' : 'hideAdd'">
+      <input type="text" class="form-control" id="otherConvenience" placeholder="name">
+      <label for="otherConvenience">Other convenience</label>
+    </div>
+    <div class="form-floating mb-3" [ngClass]="isVilla ? 'showAdd' : 'hideAdd'">
+      <input type="number" class="form-control" id="poolArea" placeholder="name">
+      <label for="poolArea">Pool area</label>
+    </div>
+    <div class="form-floating mb-3" [ngClass]="(isHouse || isVilla) ? 'showAdd' : 'hideAdd'">
+      <input type="number" class="form-control" id="floors" placeholder="name">
+      <label for="floors">Number of floors</label>
+    </div>
+    <div>
+      <button class="btn text-white w-100" [ngClass]="showSaveButton ? 'showAdd' : 'hideAdd'"
+              style="background: #00787b">Save
+      </button>
+    </div>
+  </form>
+</div>
+

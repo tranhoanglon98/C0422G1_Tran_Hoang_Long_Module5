@@ -1,16 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-facility',
-  templateUrl: './facility.component.html',
-  styleUrls: ['./facility.component.css']
+  selector: 'app-update-facility',
+  templateUrl: './update-facility.component.html',
+  styleUrls: ['./update-facility.component.css']
 })
-export class FacilityComponent implements OnInit {
-
+export class UpdateFacilityComponent implements OnInit {
   isRoom: boolean = false;
   isHouse: boolean = false;
   isVilla: boolean = false;
-  showAddButton:boolean = false;
+  showSaveButton:boolean = false;
 
   constructor() {
   }
@@ -24,26 +23,27 @@ export class FacilityComponent implements OnInit {
         this.isVilla = false
         this.isRoom = false
         this.isHouse = false
-        this.showAddButton = false
+        this.showSaveButton = false
         break
       case "1":
         this.isVilla = true
         this.isRoom = false
         this.isHouse = false
-        this.showAddButton = true
+        this.showSaveButton = true
         break
       case "2":
         this.isVilla = false
         this.isRoom = false
         this.isHouse = true
-        this.showAddButton = true
+        this.showSaveButton = true
         break
       case "3":
         this.isVilla = false
         this.isRoom = true
         this.isHouse = false
-        this.showAddButton = true
+        this.showSaveButton = true
         break
     }
   }
+
 }
