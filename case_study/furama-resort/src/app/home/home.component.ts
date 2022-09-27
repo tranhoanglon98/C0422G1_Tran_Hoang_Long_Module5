@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
     let spaPackagePosition = document.getElementById("spaPackage").offsetTop;
     let roomPosition = document.getElementById("room").offsetTop;
     let yPosition = window.pageYOffset;
-    console.log(yPosition)
     if (yPosition > aboutUsPosition - 400) {
       this.showAboutUstText = true;
     }

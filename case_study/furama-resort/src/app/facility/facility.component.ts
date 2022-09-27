@@ -19,6 +19,11 @@ export class FacilityComponent implements OnInit {
   }
 
   chooseFacilityType(type: any) {
+    this.isVilla = false
+    this.isRoom = false
+    this.isHouse = false
+    this.showAddButton = false
+
     switch (type.value) {
       case "0":
         this.isVilla = false
@@ -28,20 +33,14 @@ export class FacilityComponent implements OnInit {
         break
       case "1":
         this.isVilla = true
-        this.isRoom = false
-        this.isHouse = false
         this.showAddButton = true
         break
       case "2":
-        this.isVilla = false
-        this.isRoom = false
         this.isHouse = true
         this.showAddButton = true
         break
       case "3":
-        this.isVilla = false
         this.isRoom = true
-        this.isHouse = false
         this.showAddButton = true
         break
     }

@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
     this.yPosition = window.pageYOffset
     this.onTop = window.pageYOffset == 0;
     let aboutUs = document.getElementById("aboutUs").offsetTop
-    console.log( 'about us: ' + aboutUs)
     let footerPosition = document.getElementById("footer").offsetTop
     if (this.yPosition > aboutUs - 100 && this.yPosition < footerPosition) {
       this.buttonColor = "#00787b"

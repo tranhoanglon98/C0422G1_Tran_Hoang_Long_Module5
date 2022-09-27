@@ -1,5 +1,5 @@
 <div class="position-relative align-items-center justify-content-end d-flex">
-  <video loop muted autoplay width="100%" class="d-inline-block">
+  <video loop muted autoplay width="100%" class="d-inline-block" oncanplay="this.play()" onloadedmetadata="this.muted = true">
     <source src="assets/videos/Boat - 44549.mp4" type="video/mp4">
   </video>
   <div class="slogan text-end">
@@ -12,7 +12,7 @@
 </div>
 <div id="aboutUs" class="container mt-5">
   <div  class="row mb-5">
-    <div class="fadeText col-lg-4 col-md-12 col-sm-12" [ngClass]="showAboutUstText ? 'textScrolled':''">
+    <div class="fadeText col-lg-4 col-md-12 col-sm-12" [class.textScrolled]="showAboutUstText">
       <div class="row">
         <div class="col-lg-12">
           <h2 class="text-center">About Us</h2>
@@ -36,7 +36,7 @@
     </div>
   </div>
   <div  class="row mb-5 align-items-center d-flex justify-content-center">
-    <div id="spa" class="fadeText col-lg-12 mt-5 mb-5 text-center" [ngClass]="showSpaText ? 'textScrolled' : ''">
+    <div id="spa" class="fadeText col-lg-12 mt-5 mb-5 text-center" [class.textScrolled]="showSpaText">
       <h2>Spa & Fitness</h2>
       <p>For those who would rather relax and pamper themselves, please stop by the Beauty Salon to make a reservation
         for a body or foot massage, body treatments, facials, manicures, pedicures, exfoliations, waxing or simply
@@ -67,7 +67,7 @@
         </button>
       </div>
     </div>
-    <div id="spaPackage" class="col-lg-8 col-md-8 col-sm-11 col-11 fadeText" [ngClass]="showSpaPackageText ? 'textScrolled' : ''">
+    <div id="spaPackage" class="col-lg-8 col-md-8 col-sm-11 col-11 fadeText" [class.textScrolled]="showSpaPackageText">
       <div class="row fs-4 m-3">
         <div class="col-lg-2 col-md-1 col-sm-2 col-2 text-center">
           <i class="fa-solid fa-circle-plus"></i>
@@ -111,7 +111,7 @@
     </div>
   </div>
   <div class="row mb-5">
-    <div id="room" class="col-lg-12 text-center mt-5 mb-5 fadeText" [ngClass]="showRoomText ? 'textScrolled' : ''">
+    <div id="room" class="col-lg-12 text-center mt-5 mb-5 fadeText" [class.textScrolled]="showRoomText">
       <h2>Rooms & Suites</h2>
       <p>Whether you are looking for a short weekend break or a longer holiday, we offer a range of packages
         that will cater for all.

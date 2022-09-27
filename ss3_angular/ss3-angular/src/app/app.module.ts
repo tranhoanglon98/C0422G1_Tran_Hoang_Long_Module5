@@ -12,6 +12,8 @@ import { NewsComponent } from './news/news.component';
 import { LikeComponent } from './news/like/like.component';
 import { NavBarComponent } from './news/nav-bar/nav-bar.component';
 import { FooterComponent } from './news/footer/footer.component';
+import { RatingBarComponent } from './rating-bar/rating-bar.component';
+import { CountdownTimerComponent } from './countdown-timer/countdown-timer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,9 @@ import { FooterComponent } from './news/footer/footer.component';
     NewsComponent,
     LikeComponent,
     NavBarComponent,
-    FooterComponent
+    FooterComponent,
+    RatingBarComponent,
+    CountdownTimerComponent
   ],
     imports: [
         BrowserModule,
