@@ -1,0 +1,78 @@
+<div class="w-50 mx-auto mt-5">
+  <div>
+    <h2 class="text-center">Register form</h2>
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="submit()">
+    <div class="mb-3 mt-5">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1"
+             formControlName="email" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      <div *ngIf="registerForm.controls.email.hasError('required') && registerForm.controls.email.touched">
+        <p class="text-danger">Email must not be blank</p>
+      </div>
+      <div *ngIf="registerForm.controls.email.hasError('email') && registerForm.controls.email.touched">
+        <p class="text-danger">Wrong format</p>
+      </div>
+    </div>
+    <div formGroupName="passwordGroup">
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control"
+               formControlName="password" id="exampleInputPassword1">
+        <p
+          *ngIf="registerForm.controls.passwordGroup.get('password').hasError('required') && registerForm.controls.passwordGroup.get('password').touched"
+          class="text-danger">Password must not be blank</p>
+        <p
+          *ngIf="registerForm.controls.passwordGroup.get('password').errors?.minlength && registerForm.controls.passwordGroup.get('password').touched"
+          class="text-danger">Password must be at least 6 characters</p>
+      </div>
+      <div class="mb-3">
+        <label for="confirmPassword1" class="form-label">Confirm password</label>
+        <input type="password" class="form-control"
+               formControlName="confirmPassword" id="confirmPassword1">
+        <p
+          *ngIf="registerForm.controls.passwordGroup.get('confirmPassword').hasError('required') && registerForm.controls.passwordGroup.get('confirmPassword').touched"
+          class="text-danger">Confirm password must not be blank</p>
+        <p
+          *ngIf="registerForm.controls.passwordGroup.get('confirmPassword').errors?.minlength && registerForm.controls.passwordGroup.get('confirmPassword').touched"
+          class="text-danger">Confirm password must be at least 6 characters</p>
+        <p
+          *ngIf="registerForm.controls.passwordGroup.hasError('passwordNotMatch') && registerForm.controls.passwordGroup.get('confirmPassword').touched"
+          class="text-danger">Confirm password not match</p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="country" class="form-label">Country</label>
+      <select class="form-control"
+              formControlName="country" id="country">
+        <option *ngFor="let country of countries" value="{{country.id}}}">{{country.name}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <input type="number" class="form-control" id="age" formControlName="age">
+      <p *ngIf="registerForm.controls.age.hasError('min') && registerForm.controls.age.touched"
+         class="text-danger">Age must greater than or equal to 18</p>
+      <p *ngIf="registerForm.controls.age.hasError('required') && registerForm.controls.age.touched"
+         class="text-danger">Age must not me blank</p>
+    </div>
+    <div class="mb-3 d-flex align-items-center">
+      <label for="male" class="form-label m-1">Male</label>
+      <input name="gender" type="radio" id="male" class="form-check-input m-1 me-5" value="true"
+             formControlName="gender">
+      <label for="female" class="form-label m-1">Female</label>
+      <input name="gender" type="radio" id="female" class="form-check-input m-1 me-5" value="false"
+             formControlName="gender">
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone</label>
+      <input type="text" class="form-control" id="phone" formControlName="phone">
+      <p *ngIf="registerForm.controls.phone.hasError('required') && registerForm.controls.age.touched"
+         class="text-danger">phone must not me blank</p>
+      <p *ngIf="registerForm.controls.phone.hasError('pattern') && registerForm.controls.age.touched"
+         class="text-danger">Wrong format</p>
+    </div>
+    <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary">Submit</button>
+  </form>
+</div>
