@@ -2,12 +2,12 @@
   <div class="header d-flex align-items-center" [ngClass]="scrollDown ? 'scrollDown' : ''">
     <div class="header headerBackground" [ngClass]="onTop ? 'headerBgOnTop' : ''"></div>
     <div class="d-flex justify-content-center mx-auto w-100 row" style="font-family: Anonymous Pro,serif">
-      <a href="#" class="col-lg-2 col-md-2 header_link ">Customer</a>
+      <a routerLink="customer" class="col-lg-2 col-md-2 header_link ">Customer</a>
       <a href="#" class="col-lg-2 col-md-2 header_link ">Employee</a>
-      <a href="#" class="col-lg-2 col-md-2 header_link ">
+      <a routerLink="" class="col-lg-2 col-md-2 header_link ">
         <h3 style="font-family: Courier Prime,serif; margin: 0">Home</h3>
       </a>
-      <a href="#" class="col-lg-2 col-md-2 header_link ">Service</a>
+      <a routerLink="facility" class="col-lg-2 col-md-2 header_link ">Service</a>
       <a href="#" class="col-lg-2 col-md-2 header_link ">Contract</a>
     </div>
   </div>
@@ -25,10 +25,10 @@
         <i class="fa-solid fa-xmark text-white"></i>
       </button>
     </div>
-    <a href="#" class="side_nav_Bar_link "><h4 style="font-family: Courier Prime,serif">HOME</h4></a>
-    <a href="#" class="side_nav_Bar_link ">Customer</a>
+    <a routerLink="" class="side_nav_Bar_link "><h4 style="font-family: Courier Prime,serif">HOME</h4></a>
+    <a routerLink="customer" class="side_nav_Bar_link ">Customer</a>
     <a href="#" class="side_nav_Bar_link ">Employee</a>
-    <a href="#" class="side_nav_Bar_link ">Service</a>
+    <a routerLink="facility" class="side_nav_Bar_link ">Service</a>
     <a href="#" class="side_nav_Bar_link ">Contract</a>
   </div>
 </nav>

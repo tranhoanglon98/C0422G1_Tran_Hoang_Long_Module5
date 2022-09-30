@@ -43,7 +43,7 @@ export class ProductService {
 
   delete(id: number) {
     for (let i = 0; i < this.products.length; i++) {
-      if (this.products[i].id === id) {
+      if (this.products[i].id == id) {
         this.products.splice(i, 1)
         break
       }
@@ -51,15 +51,14 @@ export class ProductService {
   }
 
   findById(id: number) {
-    return this.products.filter(w => w.id === id)[0]
+    return this.products.filter(w => w.id == id)[0]
   }
 
   save(product: any) {
     for (let i = 0; i < this.products.length; i++) {
-      if (this.products[i].id === product.id) {
-        this.products[i].name = product.name
-        this.products[i].price = product.price
-        this.products[i].description = product.description
+      if (this.products[i].id == product.id) {
+        this.products[i] = product
+        break
       }
     }
   }
