@@ -1,0 +1,9 @@
+<div class="mx-auto w-50 mt-5">
+  <div class="text-center">
+    <h1>Chữ xưa còn một ít này</h1>
+    <p><i>Nguyễn Thùy Dung</i></p>
+  </div>
+  <div>
+    <a [routerLink]="['/detail',word]" *ngFor="let word of dictionary"><h5>{{word}}</h5></a>
+  </div>
+</div>
