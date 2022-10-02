@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerService} from "../service/customer/customer.service";
-import {ICustomer} from "../model/customer/i-customer";
-import {ICustomerType} from "../model/customer/i-customer-type";
+import {Customer} from "../model/customer/customer";
 
 @Component({
   selector: 'app-customer',
@@ -9,13 +8,25 @@ import {ICustomerType} from "../model/customer/i-customer-type";
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-  customerList: ICustomer[]
+  customerList: Customer[]
+  customerToDelete: Customer = new Customer()
 
   constructor(private customerService: CustomerService) {
-    this.customerList = customerService.getAllCustomer()
   }
 
   ngOnInit(): void {
+    this.customerService.getAllCustomer().subscribe(customers => {
+      this.customerList = customers.content
+    })
   }
 
+  getInFoToModal(customer: Customer) {
+    this.customerToDelete = customer
+  }
+
+  delete(id: number) {
+    this.customerService.delete(id).subscribe(next => {
+      this.ngOnInit()
+    })
+  }
 }

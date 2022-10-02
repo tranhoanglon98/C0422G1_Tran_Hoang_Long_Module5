@@ -1,4 +1,4 @@
 export interface ICustomerType {
   id: number
-  type: string
+  name: string
 }

@@ -11,6 +11,8 @@ import { UpdateFacilityComponent } from './facility/update-facility/update-facil
 import { CustomerComponent } from './customer/customer.component';
 import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
 import { UpdateCustomerComponent } from './customer/update-customer/update-customer.component';
+import {HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { UpdateCustomerComponent } from './customer/update-customer/update-custo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

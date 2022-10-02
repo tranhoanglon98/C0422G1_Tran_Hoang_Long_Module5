@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Customer</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <script src="https://kit.fontawesome.com/121b5e5230.js" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Bad Script' rel='stylesheet'>
+</head>
+<body style="font-family: Courgette,serif;background: #E0FFFF">
+<div class="container-fluid position-relative">
+    <div class="row">
+        <div class="col-lg-10 d-flex pt-2 justify-content-center  position-absolute" style="top: 7%">
+            <div class="row" style="width: 95%">
+                <div class="col-lg-12 text-center">
+                    <h2>Edit Customer</h2>
+                </div>
+                <div class="col-lg-12 text-dark">
+                    <form action="/customer/save" id="inputForm" th:object="${customerDto}" method="post">
+                        <input type="hidden" th:field="*{id}">
+                        <div class="row ">
+                            <div class="col-lg-6 ps-5 pe-5">
+                                <div class="row pb-4">
+                                    <div class="col-lg-12"><span>Name: </span><span class="text-danger" th:errors="*{name}"></span>
+                                    </div>
+                                    <div class="col-lg-12"><input type="text" name="name" class="form-control shadow"
+                                                                  placeholder="Customer name"
+                                                                  aria-label="Customer name" th:field="*{name}"></div>
+                                </div>
+                                <div class="row pb-4">
+                                    <div class="col-lg-12"><span>Day of birth: </span><span
+                                            class="text-danger" th:errors="*{dayOfBirth}"></span></div>
+                                    <div class="col-lg-12"><input type="date" name="birthday" class="form-control shadow"
+                                                                  placeholder="Birthday"
+                                                                  aria-label="Birthday" th:field="*{dayOfBirth}"></div>
+                                </div>
+                                <div class="row pb-4">
+                                    <div class="col-lg-12"><span>Gender: </span></span></div>
+                                    <div class="col-lg-12">
+                                        <select th:field="*{gender}" class="form-control shadow">
+                                            <option th:value="false">Female</option>
+                                            <option th:value="true">Male</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row pb-4">
+                                    <div class="col-lg-12"><span>ID card: </span><span class="text-danger"  th:errors="*{idCard}"></span>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <input type="number" name="idCard" class="form-control shadow"
+                                               placeholder="ID card" aria-label="ID card" th:field="*{idCard}">
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-lg-12">
+                                        <button type="submit" name="action" value="add" class="shadow w-100 btn btn-dark text-warning">Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 ps-5 pe-5">
+                                <div class="row pb-4">
+                                    <div class="col-lg-12"><span>Phone: </span><span class="text-danger"  th:errors="*{phoneNumber}"></span>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <input type="number" name="phone" class="form-control shadow" placeholder="Phone"
+                                               aria-label="Phone" th:field="*{phoneNumber}">
+                                    </div>
+                                </div>
+                                <div class="row pb-4">
+                                    <div class="col-lg-12"><span>Email: </span><span class="text-danger"  th:errors="*{email}"></span>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <input type="email" name="email" class="form-control shadow"
+                                               placeholder="Email" th:field="*{email}" aria-label="Email">
+                                    </div>
+                                </div>
+                                <div class="row pb-4">
+                                    <div class="col-lg-12"><span>Customer type</span></div>
+                                    <div class="col-lg-12">
+                                        <select th:field="*{customerType}" class="form-control shadow">
+                                            <option th:each="type:${customerTypeList}"
+                                                    th:value="${type.id}" th:text="${type.name}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row pb-4">
+                                    <div class="col-lg-12"><span>Address: </span><span th:errors="*{address}" class="text-danger"></span></div>
+                                    <div class="col-lg-12">
+                                        <input type="text" name="address" class="form-control shadow"
+                                               placeholder="Address"
+                                               aria-label="Address" th:field="*{address}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10 p-0 pt-2 d-flex justify-content-center">
+            <img style="border-radius: 30px" class="shadow" width="89%"
+                 src="https://img.freepik.com/premium-photo/white-plane-yellow-background-flat-lay-design-travel-concept-3d-rendering_494516-14.jpg?w=2000"
+                 alt="">
+        </div>
+        <nav th:replace="nav::nav_bar"></nav>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+     tabindex="-1">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-light">
+                <h5>Edit</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <span th:if="${mess != null}" th:text="${mess}" id="modalInfo"></span>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function (){
+        if ($("#modalInfo").val() != null){
+            console.log($("#modalInfo").val())
+            $("#exampleModalToggle").modal('show')
+        }
+    })
+</script>
+</body>
+</html>

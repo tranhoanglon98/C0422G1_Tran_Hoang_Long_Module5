@@ -8,47 +8,52 @@
   <div class="mb-3">
     <h5 class="text-center">Add new customer</h5>
   </div>
-  <form action="">
+  <form [formGroup]="customerForm">
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="customerName" placeholder="name">
+      <input type="text" class="form-control" formControlName="name" id="customerName" placeholder="name">
       <label for="customerName">Customer name</label>
     </div>
     <div class="form-floating mb-3">
-      <input type="number" class="form-control" id="dayOfBirth" placeholder="name">
+      <input type="date" class="form-control" id="dayOfBirth" formControlName="dayOfBirth" placeholder="name">
       <label for="dayOfBirth">Day of birth</label>
     </div>
-    <select id="gender" class="form-select mb-3">
-      aria-label="Default select example">
-      <option value="0">Choose gender</option>
-      <option value="1">Male</option>
-      <option value="2">Female</option>
-    </select>
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="idCard" placeholder="name">
+      <select id="gender" formControlName="gender" class="form-select mb-3">
+        aria-label="Default select example">
+        <option value="true">Male</option>
+        <option value="false">Female</option>
+      </select>
+      <label for="gender">Address</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" formControlName="idCard" id="idCard" placeholder="name">
       <label for="idCard">ID card</label>
     </div>
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="phone" placeholder="name">
+      <input type="text" class="form-control" id="phone" formControlName="phoneNumber" placeholder="name">
       <label for="phone">Phone number</label>
     </div>
     <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="email" placeholder="name">
+      <input type="email" class="form-control" id="email" formControlName="email" placeholder="name">
       <label for="email">Email</label>
     </div>
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="address" placeholder="name">
+      <input type="text" class="form-control" id="address" formControlName="address" placeholder="name">
       <label for="address">Address</label>
     </div>
-    <select id="customerType" class="form-select mb-3" aria-label="Default select example">
-      <option value="0">Choose customer type</option>
-      <option value="1">Diamond</option>
-      <option value="2">Platinum</option>
-      <option value="3">Gold</option>
-      <option value="4">Silver</option>
-      <option value="5">Member</option>
-    </select>
+    <div  class="form-floating mb-3" formGroupName="customerType">
+      <select id="customerType" class="form-select mb-3" formControlName="id"
+              aria-label="Default select example">
+        <option value="1">Diamond</option>
+        <option value="2">Platinum</option>
+        <option value="3">Gold</option>
+        <option value="4">Silver</option>
+        <option value="5">Member</option>
+      </select>
+      <label for="customerType">Address</label>
+    </div>
     <div>
-      <button class="btn text-white w-100"
+      <button class="btn text-white w-100" (click)="add()"
               style="background: #00787b">Add
       </button>
     </div>
