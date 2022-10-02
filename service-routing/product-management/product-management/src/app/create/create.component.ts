@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProductService} from "../service/product.service";
 import {Router} from "@angular/router";
@@ -9,23 +9,27 @@ import {Router} from "@angular/router";
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+  categories: any[]
   product: FormGroup = new FormGroup({
-    id: new FormControl('',Validators.required),
-    name: new FormControl('',Validators.required),
-    price: new FormControl('',Validators.required),
-    description: new FormControl('',Validators.required)
+    name: new FormControl('', Validators.required),
+    price: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    category: new FormControl('', Validators.required)
   })
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router) {
+    this.productService.getAllCategory().subscribe(next=>{
+      this.categories = next
+    })
+  }
 
   ngOnInit(): void {
   }
 
-  addNewProduct(){
-    if (this.product.valid){
-      this.productService.addNewProduct(this.product.value)
+  addNewProduct() {
+    this.productService.save(this.product.value).subscribe(next => {
       this.router.navigateByUrl('')
-    }
+    })
   }
 
 }

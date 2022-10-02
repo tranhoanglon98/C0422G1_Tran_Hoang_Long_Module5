@@ -11,28 +11,54 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 })
 export class EditComponent implements OnInit {
   product: IProduct
-
   productForm: FormGroup
+  categories: any
+  id: number
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private router:Router) {
-    activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = parseInt(paramMap.get('id'))
-      this.product = productService.findById(id);
-      this.productForm = new FormGroup({
-        id: new FormControl(this.product.id,Validators.required),
-        name: new FormControl(this.product.name,Validators.required),
-        price: new FormControl(this.product.price,Validators.required),
-        description: new FormControl(this.product.description,Validators.required)
-      })
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private router: Router) {
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = parseInt(paramMap.get('id'))
+    })
+    
+    this.productService.getAllCategory().subscribe(next => {
+      this.categories = next
     })
   }
 
   ngOnInit(): void {
+    this.getProduct()
+  }
+
+  getProduct() {
+    this.productService.findById(this.id).subscribe(
+      next => {
+        this.product = next
+      },
+      error => {
+      },
+      () => {
+        this.getForm()
+      });
+  }
+
+  getForm() {
+    this.productForm = new FormGroup({
+      id: new FormControl(this.product.id),
+      name: new FormControl(this.product.name, Validators.required),
+      price: new FormControl(this.product.price, Validators.required),
+      description: new FormControl(this.product.description, Validators.required),
+      category: new FormControl(this.product.category.id)
+    })
   }
 
   save() {
-    console.log(this.productForm.value)
-    this.productService.save(this.productForm.value)
-    this.router.navigateByUrl('')
+    const product = this.productForm.value
+    console.log(product)
+    this.productService.findCategoryById(product.category).subscribe(next => {
+      product.category = next
+      this.productService.edit(product).subscribe(next => {
+        this.router.navigateByUrl('')
+      })
+    })
   }
 }

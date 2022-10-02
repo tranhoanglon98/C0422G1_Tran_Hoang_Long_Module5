@@ -12,7 +12,7 @@
 </div>
 <div id="aboutUs" class="container mt-5">
   <div  class="row mb-5">
-    <div class="fadeText col-lg-4 col-md-12 col-sm-12" [class.textScrolled]="showAboutUstText">
+    <div class="fadeBlock col-lg-4 col-md-12 col-sm-12" [class.delayScrolled]="showAboutUstText">
       <div class="row">
         <div class="col-lg-12">
           <h2 class="text-center">About Us</h2>
@@ -31,18 +31,18 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-8 col-md-12 col-sm-12">
+    <div class="fadeBlock col-lg-8 col-md-12 col-sm-12" [class.scrolled]="showAboutUstText">
       <img src="../../assets/images/LLN_PV_01_Villa-huong-bien_A-2.jpg" width="100%"/>
     </div>
   </div>
   <div  class="row mb-5 align-items-center d-flex justify-content-center">
-    <div id="spa" class="fadeText col-lg-12 mt-5 mb-5 text-center" [class.textScrolled]="showSpaText">
+    <div id="spa" class="fadeBlock col-lg-12 mt-5 mb-5 text-center" [class.scrolled]="showSpaText">
       <h2>Spa & Fitness</h2>
       <p>For those who would rather relax and pamper themselves, please stop by the Beauty Salon to make a reservation
         for a body or foot massage, body treatments, facials, manicures, pedicures, exfoliations, waxing or simply
         relax inside our sauna and steam baths.</p>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-11 col-11 p-0"
+    <div class="fadeBlock col-lg-4 col-md-4 col-sm-11 col-11 p-0" [class.scrolled]="showSpaPackageText"
          style="z-index: 0;border-radius: 15px">
       <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel"
            data-bs-interval="2500">
@@ -67,7 +67,7 @@
         </button>
       </div>
     </div>
-    <div id="spaPackage" class="col-lg-8 col-md-8 col-sm-11 col-11 fadeText" [class.textScrolled]="showSpaPackageText">
+    <div id="spaPackage" class="col-lg-8 col-md-8 col-sm-11 col-11 fadeBlock" [class.delayScrolled]="showSpaPackageText">
       <div class="row fs-4 m-3">
         <div class="col-lg-2 col-md-1 col-sm-2 col-2 text-center">
           <i class="fa-solid fa-circle-plus"></i>
@@ -111,13 +111,13 @@
     </div>
   </div>
   <div class="row mb-5">
-    <div id="room" class="col-lg-12 text-center mt-5 mb-5 fadeText" [class.textScrolled]="showRoomText">
+    <div id="room" class="col-lg-12 text-center mt-5 mb-5 fadeBlock" [class.scrolled]="showRoomText">
       <h2>Rooms & Suites</h2>
       <p>Whether you are looking for a short weekend break or a longer holiday, we offer a range of packages
         that will cater for all.
       </p>
     </div>
-    <div class="col-lg-12">
+    <div class="fadeBlock col-lg-12" [class.delayScrolled]="showRoomText">
       <div class="row text-center">
         <div class="col-lg-4">
           <div>

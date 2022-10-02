@@ -1,0 +1,68 @@
+{
+  "product": [
+    {
+      "id": 1,
+      "name": "Tông Lào",
+      "price": 50000,
+      "description": "màu xanh, bền như cái mền",
+      "category": {
+        "id": 2,
+        "name": "Fashion"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Nokia cục gạch",
+      "price": 2000000,
+      "description": "ném chó chó chết",
+      "category": {
+        "id": 1,
+        "name": "Electronic"
+      }
+    },
+    {
+      "id": 3,
+      "name": "laptop dell",
+      "price": 54440000,
+      "description": "như mới (30%)",
+      "category": {
+        "id": 1,
+        "name": "Electronic"
+      }
+    },
+    {
+      "id": 4,
+      "name": "thảm trải sàn Codegym",
+      "price": 2,
+      "description": "thúi um",
+      "category": {
+        "id": 3,
+        "name": "Appliances"
+      }
+    },
+    {
+      "name": "fsdfsdf",
+      "price": 43543,
+      "description": 43434,
+      "category": {
+        "id": 2,
+        "name": "Fashion"
+      },
+      "id": 6
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "Electronic"
+    },
+    {
+      "id": 2,
+      "name": "Fashion"
+    },
+    {
+      "id": 3,
+      "name": "Appliances"
+    }
+  ]
+}

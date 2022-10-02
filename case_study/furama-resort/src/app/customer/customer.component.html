@@ -21,93 +21,17 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>1</td>
-      <td>Tran Hoang Long</td>
-      <td>03/08/1998</td>
-      <td>Male</td>
-      <td>123456454</td>
-      <td>090125452</td>
-      <td>tranhoanglong@gmail.com</td>
-      <td>Thua Thien Hue</td>
-      <td>Diamond</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Tran Hoang Long</td>
-      <td>03/08/1998</td>
-      <td>Male</td>
-      <td>123456454</td>
-      <td>090125452</td>
-      <td>tranhoanglong@gmail.com</td>
-      <td>Thua Thien Hue</td>
-      <td>Diamond</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Tran Hoang Long</td>
-      <td>03/08/1998</td>
-      <td>Male</td>
-      <td>123456454</td>
-      <td>090125452</td>
-      <td>tranhoanglong@gmail.com</td>
-      <td>Thua Thien Hue</td>
-      <td>Diamond</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Tran Hoang Long</td>
-      <td>03/08/1998</td>
-      <td>Male</td>
-      <td>123456454</td>
-      <td>090125452</td>
-      <td>tranhoanglong@gmail.com</td>
-      <td>Thua Thien Hue</td>
-      <td>Diamond</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>Tran Hoang Long</td>
-      <td>03/08/1998</td>
-      <td>Male</td>
-      <td>123456454</td>
-      <td>090125452</td>
-      <td>tranhoanglong@gmail.com</td>
-      <td>Thua Thien Hue</td>
-      <td>Diamond</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>Tran Hoang Long</td>
-      <td>03/08/1998</td>
-      <td>Male</td>
-      <td>123456454</td>
-      <td>090125452</td>
-      <td>tranhoanglong@gmail.com</td>
-      <td>Thua Thien Hue</td>
-      <td>Diamond</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>Tran Hoang Long</td>
-      <td>03/08/1998</td>
-      <td>Male</td>
-      <td>123456454</td>
-      <td>090125452</td>
-      <td>tranhoanglong@gmail.com</td>
-      <td>Thua Thien Hue</td>
-      <td>Diamond</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>Tran Hoang Long</td>
-      <td>03/08/1998</td>
-      <td>Male</td>
-      <td>123456454</td>
-      <td>090125452</td>
-      <td>tranhoanglong@gmail.com</td>
-      <td>Thua Thien Hue</td>
-      <td>Diamond</td>
+    <tr *ngFor="let customer of customerList, let i = index">
+      <td>{{i+1}}</td>
+      <td>{{customer.name}}</td>
+      <td>{{customer.dayOfBirth}}</td>
+      <td *ngIf="customer.gender">Male</td>
+      <td *ngIf="!customer.gender">Female</td>
+      <td>{{customer.idCard}}</td>
+      <td>{{customer.phone}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.address}}</td>
+      <td>{{customer.customerType.type}}</td>
     </tr>
     </tbody>
   </table>

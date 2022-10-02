@@ -2,28 +2,34 @@
   <h1 class="mt-5">Add new product</h1>
   <form class="mt-5" [formGroup]="product">
     <div class="form-floating mb-3">
-      <input type="number" formControlName="id" class="form-control" id="floatingIdt" placeholder="name@example.com">
-      <label for="floatingIdt">ID</label>
-      <p class="text-danger" *ngIf="product.controls.id.hasError('required') && product.controls.id.touched">Can not be blank</p>
-    </div>
-    <div class="form-floating mb-3">
       <input type="text" formControlName="name" class="form-control" id="floatingName" placeholder="Password">
       <label for="floatingName">Name</label>
-      <p class="text-danger" *ngIf="product.controls.name.hasError('required') && product.controls.name.touched">Can not be blank</p>
+      <p class="text-danger" *ngIf="product.controls.name.hasError('required') && product.controls.name.touched">Can not
+        be blank</p>
     </div>
     <div class="form-floating mb-3">
       <input type="number" formControlName="price" class="form-control" id="floatingPrice" placeholder="Password">
       <label for="floatingPrice">Price</label>
-      <p class="text-danger" *ngIf="product.controls.price.hasError('required') && product.controls.price.touched">Can not be blank</p>
+      <p class="text-danger" *ngIf="product.controls.price.hasError('required') && product.controls.price.touched">Can
+        not be blank</p>
     </div>
     <div class="form-floating mb-3">
-      <input type="text" formControlName="description" class="form-control" id="floatingDescription" placeholder="Password">
-      <label for="floatingDescription">Description</label>
-      <p class="text-danger" *ngIf="product.controls.description.hasError('required') && product.controls.description.touched">Can not be blank</p>
+      <input type="text" formControlName="description" class="form-control" id="floatingIdt"
+             placeholder="name@example.com">
+      <label for="floatingIdt">Description</label>
+      <p class="text-danger"
+         *ngIf="product.controls.description.hasError('required') && product.controls.description.touched">Can not be
+        blank</p>
+    </div>
+    <div class="form-floating mb-3">
+      <select formControlName="category" class="form-select">
+        <option value="">Choose category</option>
+        <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+      </select>
     </div>
     <div class="d-flex justify-content-between">
-    <button class="btn btn-success w-25" (click)="addNewProduct()" [disabled]="product.invalid">Add</button>
-    <button class="btn btn-success w-25" routerLink="">Back</button>
+      <button class="btn btn-success w-25" (click)="addNewProduct()" [disabled]="product.invalid">Add</button>
+      <button class="btn btn-success w-25" routerLink="">Back</button>
     </div>
   </form>
 </div>
