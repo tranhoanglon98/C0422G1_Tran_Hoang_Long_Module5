@@ -1,0 +1,76 @@
+{
+  "vehicle": [
+    {
+      "id": 1,
+      "numberPalate": "1111",
+      "name": "Mai Linh",
+      "type": "Giường nằm",
+      "phone": "0901231231",
+      "email": "mailinh@gmail.com",
+      "startTime": "13:20",
+      "endTime": "15:20",
+      "from": {
+        "id": 1,
+        "address": "Huế"
+      },
+      "to": {
+        "id": 2,
+        "address": "Đà Nẵng"
+      }
+    },
+    {
+      "id": 2,
+      "numberPalate": "1234",
+      "name": "Hoàng Long",
+      "type": "Giường nằm",
+      "phone": "0909999999",
+      "email": "hoanglong@gmail.com",
+      "startTime": "15:20",
+      "endTime": "19:20",
+      "from": {
+        "id": 1,
+        "address": "Huế"
+      },
+      "to": {
+        "id": 3,
+        "address": "Quảng Trị"
+      }
+    },
+    {
+      "id": 3,
+      "numberPalate": "8888",
+      "name": "Phương Trang",
+      "type": "Ghế ngồi",
+      "phone": "0907777777",
+      "email": "mailinh@gmail.com",
+      "startTime": "06:20",
+      "endTime": "15:20",
+      "from": {
+        "id": 2,
+        "address": "Đà Nẵng"
+      },
+      "to": {
+        "id": 2,
+        "address": "Đà Nẵng"
+      }
+    }
+  ],
+  "address": [
+    {
+      "id": 1,
+      "address": "Huế"
+    },
+    {
+      "id": 2,
+      "address": "Đà Nẵng"
+    },
+    {
+      "id": 3,
+      "address": "Quảng Trị"
+    },
+    {
+      "id": 4,
+      "address": "Quảng Bình"
+    }
+  ]
+}

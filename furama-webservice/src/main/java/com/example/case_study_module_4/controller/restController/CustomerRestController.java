@@ -28,7 +28,7 @@ public class CustomerRestController {
 
 
     @GetMapping("")
-    public ResponseEntity<Page<Customer>> goCustomerPage(Pageable pageable) {
+    public ResponseEntity<Page<Customer>> goCustomerPage(@PageableDefault(size = 5) Pageable pageable) {
         Page<Customer> customerPage = this.customerService.getAll(pageable);
 
         if (customerPage.isEmpty()){
@@ -51,7 +51,7 @@ public class CustomerRestController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id){
+    public ResponseEntity<Void> delete(@PathVariable int id){
         this.customerService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -67,4 +67,5 @@ public class CustomerRestController {
         List<CustomerType> customerTypes = this.customerTypeService.findAll();
         return new ResponseEntity<>(customerTypes,HttpStatus.OK);
     }
+
 }

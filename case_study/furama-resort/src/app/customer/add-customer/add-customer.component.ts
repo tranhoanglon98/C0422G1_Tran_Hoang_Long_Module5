@@ -17,12 +17,12 @@ export class AddCustomerComponent implements OnInit {
       id: new FormControl(),
       name: new FormControl(),
       dayOfBirth: new FormControl(),
-      gender: new FormControl(),
+      gender: new FormControl(0),
       idCard: new FormControl(),
       phoneNumber: new FormControl(),
       email: new FormControl(),
       customerType: new FormGroup({
-        id: new FormControl()
+        id: new FormControl(0)
       }),
       address: new FormControl()
     })

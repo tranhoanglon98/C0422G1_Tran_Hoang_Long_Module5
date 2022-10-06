@@ -12,7 +12,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
 import { UpdateCustomerComponent } from './customer/update-customer/update-customer.component';
 import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,18 +18,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Page<Customer> getAll(Pageable pageable) {
-        return this.customerRepository.findAll(pageable);
-    }
-
-    @Override
-    public Page<Customer> findByName(String searchValue, Pageable pageable) {
-
-        return this.customerRepository.findByNameContaining(searchValue, pageable);
-    }
-
-    @Override
-    public Page<Customer> getUsingCustomer(String now, String searchValue, Pageable pageable) {
-        return this.customerRepository.getUsingCustomer(now,searchValue,pageable);
+        return this.customerRepository.getAll(pageable);
     }
 
     @Override
@@ -39,12 +28,32 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void save(Customer customer) {
-        this.customerRepository.save(customer);
+        if (customer.getId() == null){
+            this.customerRepository.add(
+                    customer.getName(),
+                    customer.getDayOfBirth(),
+                    customer.getGender(),
+                    customer.getIdCard(),
+                    customer.getPhoneNumber(),
+                    customer.getEmail(),
+                    customer.getAddress(),
+                    customer.getCustomerType().getId());
+        }else {
+            this.customerRepository.update( customer.getName(),
+                    customer.getDayOfBirth(),
+                    customer.getGender(),
+                    customer.getIdCard(),
+                    customer.getPhoneNumber(),
+                    customer.getEmail(),
+                    customer.getAddress(),
+                    customer.getCustomerType().getId(),
+                    customer.getId());
+        }
     }
 
     @Override
-    public void delete(Integer id) {
-        this.customerRepository.delete(findById(id));
+    public void delete(int id) {
+        this.customerRepository.deleteByQuery(id);
     }
 
     @Override

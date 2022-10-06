@@ -1,6 +1,6 @@
 <div class="position-relative d-flex justify-content-center text-white align-items-center">
   <div class="position-absolute bg-black bg-opacity-50 w-100">
-    <h1 class="text-center p-3" style="font-size: 60px">Customer</h1>
+    <h1 class="text-center p-3" style="font-size: 60px">ICustomer</h1>
   </div>
   <img src="../../assets/images/customer-background.jpg" width="100%"/>
 </div>
@@ -8,7 +8,7 @@
   <div class="mb-3">
     <h5 class="text-center">Update customer</h5>
   </div>
-  <form [formGroup]="customerForm">
+  <form [formGroup]="customerForm" *ngIf="customerForm">
     <div class="form-floating mb-3">
       <input type="text" class="form-control" id="customerName" formControlName="name">
       <label for="customerName">Customer name</label>
@@ -23,7 +23,7 @@
         <option value="true">Male</option>
         <option value="false">Female</option>
       </select>
-      <label for="gender">Day of birth</label>
+      <label for="gender">Gender</label>
     </div>
     <div class="form-floating mb-3">
       <input type="text" class="form-control" id="idCard" formControlName="idCard">
@@ -45,7 +45,7 @@
       <select id="customerType" class="form-select mb-3" aria-label="Default select example" formControlName="id">
         <option *ngFor="let type of customerTypes" value="{{type.id}}">{{type.name}}</option>
       </select>
-      <label for="customerType">Day of birth</label>
+      <label for="customerType">Customer type</label>
     </div>
     <div>
       <button class="btn text-white w-100" (click)="edit()"

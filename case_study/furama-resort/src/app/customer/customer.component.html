@@ -7,9 +7,9 @@
 <div class="mt-5 mb-5 container-fluid ps-5 pe-5">
   <h3 class="text-center">Customer List</h3>
   <div class="d-flex justify-content-center mt-5">
-    <a class="btn text-light" routerLink="customer/add" style="background: #00787b">Add new customer</a>
+    <a class="btn text-light" routerLink="/customer/add" style="background: #00787b">Add new customer</a>
   </div>
-  <table class="table table-hover mt-5">
+  <table class="table table-hover table-responsive mt-5">
     <thead style="background: #00787b;color: white">
     <tr>
       <th>#</th>
@@ -37,7 +37,7 @@
       <td>{{customer.address}}</td>
       <td>{{customer.customerType.name}}</td>
       <td>
-        <button class="btn" style="color: #00787b" [routerLink]="['customer/edit',customer.id]"><i class="fa-sharp fa-solid fa-pen"></i></button>
+        <button class="btn" style="color: #00787b" [routerLink]="['/customer/edit',customer.id]"><i class="fa-sharp fa-solid fa-pen"></i></button>
         <button class="btn" style="color: #00787b" (click)="getInFoToModal(customer)"
                 data-bs-toggle="modal" data-bs-target="#deleteModal">
           <i class="fa-sharp fa-solid fa-trash"></i>
@@ -46,9 +46,19 @@
     </tr>
     </tbody>
   </table>
+  <nav>
+    <ul class="pagination">
+      <li class="page-item">
+        <button class="page-link" (click)="getPage(page - 1)">Previous</button>
+      </li>
+      <li class="page-item">
+        <a class="page-link" (click)="getPage(page + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div>
 
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="customerToDelete" class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-light" style="background: #00787b">
@@ -88,7 +98,7 @@
             <p>{{customerToDelete.email}}</p>
           </div>
         </div>
-        <h6>Are you sure that you want to delete this customer?</h6>
+        <h6 class="text-danger">Are you sure that you want to delete this customer?</h6>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

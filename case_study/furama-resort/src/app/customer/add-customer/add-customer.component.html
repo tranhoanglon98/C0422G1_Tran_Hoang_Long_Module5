@@ -20,10 +20,11 @@
     <div class="form-floating mb-3">
       <select id="gender" formControlName="gender" class="form-select mb-3">
         aria-label="Default select example">
+        <option value="0">Choose gender</option>
         <option value="true">Male</option>
         <option value="false">Female</option>
       </select>
-      <label for="gender">Address</label>
+      <label for="gender">Gender</label>
     </div>
     <div class="form-floating mb-3">
       <input type="text" class="form-control" formControlName="idCard" id="idCard" placeholder="name">
@@ -44,13 +45,14 @@
     <div  class="form-floating mb-3" formGroupName="customerType">
       <select id="customerType" class="form-select mb-3" formControlName="id"
               aria-label="Default select example">
+        <option value="0">Choose customer type</option>
         <option value="1">Diamond</option>
         <option value="2">Platinum</option>
         <option value="3">Gold</option>
         <option value="4">Silver</option>
         <option value="5">Member</option>
       </select>
-      <label for="customerType">Address</label>
+      <label for="customerType">Customer Type</label>
     </div>
     <div>
       <button class="btn text-white w-100" (click)="add()"

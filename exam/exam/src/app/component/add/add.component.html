@@ -1,0 +1,35 @@
+<div class="position-relative">
+  <div class="position-absolute w-100 bg-black bg-opacity-50 p-4" style="top: 40%">
+    <h1 class="text-light text-center">ADD</h1>
+  </div>
+  <img src="../../../assets/pexels-maxime-francis-2246476.png" width="100%"/>
+</div>
+<div class="mx-auto w-50 mt-5" style="margin-bottom: 100px">
+  <h2 class="text-center" style="color: #00787b">Add</h2>
+  <div>
+    <form [formGroup]="addFrom">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
+      </div>
+      <div class="mb-3">
+        <label for="dayOfBirth" class="form-label">Day of Birth</label>
+        <input type="date" class="form-control" id="dayOfBirth" formControlName="dayOfBirth"
+               placeholder="Example input placeholder">
+      </div>
+      <div class="mb-3">
+        <label for="customerType" class="form-label">Customer type</label>
+        <select class="form-control" id="customerType" formControlName="customerType">
+          <option value="0" disabled>Choose customer type</option>
+          <option *ngFor="let type of customerTypes" [ngValue]="type">{{type.name}}</option>
+        </select>
+      </div>
+      <div class="d-flex justify-content-between">
+        <button class="btn bg text-light" (click)="add()">Add</button>
+        <button class="btn bg text-light" routerLink="">Back</button>
+      </div>
+      <p class="text-danger" *ngIf="addFrom.controls.dayOfBirth.hasError('dateLessThan18') &&
+addFrom.controls.dayOfBirth.touched">error</p>
+    </form>
+  </div>
+</div>

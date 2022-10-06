@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {CustomerService} from "../../service/customer/customer.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {Customer} from "../../model/customer/customer";
+import {ICustomer} from "../../model/customer/i-customer";
 import {ICustomerType} from "../../model/customer/i-customer-type";
 
 @Component({
@@ -11,20 +11,8 @@ import {ICustomerType} from "../../model/customer/i-customer-type";
   styleUrls: ['./update-customer.component.css']
 })
 export class UpdateCustomerComponent implements OnInit {
-  customerForm: FormGroup = new FormGroup({
-    id: new FormControl(),
-    name: new FormControl(),
-    dayOfBirth: new FormControl(),
-    gender: new FormControl(),
-    idCard: new FormControl(),
-    phoneNumber: new FormControl(),
-    email: new FormControl(),
-    customerType: new FormGroup({
-      id: new FormControl()
-    }),
-    address: new FormControl()
-  })
-  customerEdit: Customer
+  customerForm: FormGroup
+  customerEdit: ICustomer
   customerTypes: ICustomerType[]
   id: number
 

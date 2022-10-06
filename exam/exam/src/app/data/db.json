@@ -1,0 +1,73 @@
+{
+  "customer": [
+    {
+      "id": 3,
+      "name": "Tran Van C",
+      "dayOfBirth": "2022-10-25",
+      "customerType": {
+        "id": 2,
+        "name": "Diamond"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Tran Van D",
+      "dayOfBirth": "2022-10-20",
+      "customerType": {
+        "id": 4,
+        "name": "Silver"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Tran Van J",
+      "dayOfBirth": "2022-10-16",
+      "customerType": {
+        "id": 2,
+        "name": "Diamond"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Tran Duc Bo0000000",
+      "dayOfBirth": "2022-10-25",
+      "customerType": {
+        "id": 1,
+        "name": "Platinum"
+      }
+    },
+    {
+      "id": 10,
+      "name": null,
+      "dayOfBirth": "2000-10-13",
+      "customerType": 0
+    },
+    {
+      "id": 11,
+      "name": "Tran Hoang Long",
+      "dayOfBirth": "2022-10-27",
+      "customerType": {
+        "id": 1,
+        "name": "Platinum"
+      }
+    }
+  ],
+  "customerType": [
+    {
+      "id": 1,
+      "name": "Platinum"
+    },
+    {
+      "id": 2,
+      "name": "Diamond"
+    },
+    {
+      "id": 3,
+      "name": "Gold"
+    },
+    {
+      "id": 4,
+      "name": "Silver"
+    }
+  ]
+}

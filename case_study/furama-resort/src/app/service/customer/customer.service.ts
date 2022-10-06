@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Customer} from "../../model/customer/customer";
+import {ICustomer} from "../../model/customer/i-customer";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
@@ -11,15 +11,15 @@ export class CustomerService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getAllCustomer(): Observable<any>{
-    return this.httpClient.get("http://localhost:8080/customer")
+  getAllCustomer(page: number): Observable<any>{
+    return this.httpClient.get("http://localhost:8080/customer?page=" + page)
   }
 
   delete(id: number){
     return this.httpClient.delete("http://localhost:8080/customer/"+id)
   }
 
-  add(customer: Customer) {
+  add(customer: ICustomer) {
    return  this.httpClient.post("http://localhost:8080/customer",customer)
   }
 
@@ -31,7 +31,7 @@ export class CustomerService {
     return this.httpClient.get("http://localhost:8080/customer/customerType")
   }
 
-  edit(customer: Customer){
+  edit(customer: ICustomer){
     return this.httpClient.patch("http://localhost:8080/customer", customer)
   }
 }

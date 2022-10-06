@@ -10,15 +10,11 @@ public interface ICustomerService {
 
     Page<Customer> getAll(Pageable pageable);
 
-    Page<Customer> findByName(String searchValue, Pageable pageable);
-
-    Page<Customer> getUsingCustomer(String now,String searchValue, Pageable pageable);
-
     List<Customer> getListAllCustomer();
 
     void save(Customer customer);
 
-    void delete(Integer id);
+    void delete(int id);
 
     Customer findById(Integer id);
 

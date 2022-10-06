@@ -1,0 +1,81 @@
+<div class="position-relative">
+  <div class="position-absolute w-100 bg-black bg-opacity-50 p-4" style="top: 40%">
+    <h1 class="text-light text-center">EDIT</h1>
+  </div>
+  <img src="../../../assets/pexels-irina-iriser-1408221.png" width="100%"/>
+</div>
+<div class="mx-auto w-50 mt-5" style="margin-bottom: 100px">
+  <h2 class="text-center" style="color: #00787b">Edit</h2>
+  <div>
+    <form [formGroup]="editForm" *ngIf="editForm">
+      <input type="text" hidden formGroupName="id">
+      <div class="mb-3">
+        <label for="numberPalate" class="form-label">Số xe</label>
+        <input type="text" readonly class="form-control" id="numberPalate" formControlName="numberPalate" placeholder="Name">
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">Nhà xe(*)  </label>
+        <span class="text-danger" *ngIf="editForm.controls.name.hasError('required')
+        && editForm.controls.name.touched"> Không dược để trống</span>
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
+      </div>
+      <div class="mb-3">
+        <label for="type" class="form-label">Loại xe(*)  </label>
+        <span class="text-danger" *ngIf="editForm.controls.type.hasError('required')
+        && editForm.controls.type.touched"> Không dược để trống</span>
+        <input type="text" class="form-control" id="type" formControlName="type" placeholder="Name">
+      </div>
+      <div class="mb-3">
+        <label for="from" class="form-label">Điểm đi</label>
+        <span class="text-danger" *ngIf="editForm.controls.from.hasError('required')
+        && editForm.controls.from.touched"> Không dược để trống</span>
+        <select class="form-control" id="from" formControlName="from">
+          <option *ngFor="let from of address" value="{{from.id}}">{{from.address}}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="to" class="form-label">Điểm đến</label>
+        <span class="text-danger" *ngIf="editForm.controls.to.hasError('required')
+        && editForm.controls.to.touched"> Không dược để trống</span>
+        <select class="form-control" id="to" formControlName="to">
+          <option *ngFor="let to of address" value="{{to.id}}">{{to.address}}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Điện thoại</label>
+        <span class="text-danger" *ngIf="editForm.controls.phone.hasError('required')
+        && editForm.controls.phone.touched"> Không dược để trống</span>
+        <span class="text-danger" *ngIf="editForm.controls.phone.hasError('pattern')">10 số và bắt đầu bằng (090,093,097)</span>
+        <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="Name">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <span class="text-danger" *ngIf="editForm.controls.email.hasError('required')
+        && editForm.controls.phone.touched"> Không dược để trống</span>
+        <span class="text-danger" *ngIf="editForm.controls.email.hasError('email')
+        && editForm.controls.phone.touched"> Sai định dạng</span>
+        <input type="text" class="form-control" id="email" formControlName="email" placeholder="Name">
+      </div>
+      <div class="mb-3">
+        <label for="startTime" class="form-label">Giờ đi</label>
+        <span class="text-danger" *ngIf="editForm.controls.startTime.hasError('required')
+        && editForm.controls.phone.touched"> Không dược để trống</span>
+        <span class="text-danger" *ngIf="editForm.controls.startTime.hasError('timeInvalid')
+        && editForm.controls.startTime.touched"> phải lớn hơn 5:00 và nhỏ hơn 23:00</span>
+        <input type="time" class="form-control" id="startTime" formControlName="startTime" placeholder="Name">
+      </div>
+      <div class="mb-3">
+        <label for="endTime" class="form-label">Giờ đến</label>
+        <span class="text-danger" *ngIf="editForm.controls.endTime.hasError('required')
+        && editForm.controls.endTime.touched"> Không dược để trống</span>
+        <span class="text-danger" *ngIf="editForm.controls.endTime.hasError('timeInvalid')
+        && editForm.controls.endTime.touched"> phải lớn hơn 5:00 và nhỏ hơn 23:00</span>
+        <input type="time" class="form-control" id="endTime" formControlName="endTime" placeholder="Name">
+      </div>
+      <div class="d-flex justify-content-between">
+      <button class="btn bg text-light" [disabled]="editForm.invalid" (click)="edit()">Save</button>
+      <button class="btn bg text-light" routerLink="">Back</button>
+      </div>
+    </form>
+  </div>
+</div>

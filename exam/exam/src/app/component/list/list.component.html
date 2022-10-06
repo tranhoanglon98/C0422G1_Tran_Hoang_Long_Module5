@@ -1,0 +1,102 @@
+<div class="position-relative">
+  <div class="position-absolute w-100 d-flex justify-content-center bg-black bg-opacity-50" style="top: 40%">
+    <h1 class="text-center text-light">Quản lý vận tải Hoàng Long</h1>
+  </div>
+  <img src="../../../assets/pexels-rompalli-harish-1698618 (1).png" width="100%"/>
+</div>
+
+<div class="mx-auto w-75 mt-5">
+  <h2 class="text-center" style="color: #00787b">Danh sách xe</h2>
+  <div class="d-flex justify-content-center">
+    <hr style="width: 110px; color: #00787b" class="m-1">
+  </div>
+  <div class="d-flex justify-content-center">
+    <hr style="width: 80px; color: #00787b" class="m-1">
+  </div>
+  <div class="d-flex justify-content-center mt-3">
+    <button class="btn bg rounded-pill text-light">Thêm mới xe</button>
+  </div>
+  <div class="mt-4" style="margin-bottom: 100px">
+    <table class="table table-hover">
+      <thead class="bg text-light">
+      <tr>
+        <th>#</th>
+        <th>Số xe</th>
+        <th>Nhà xe</th>
+        <th>Điểm đến</th>
+        <th>Điểm đi</th>
+        <th>Điện thoại</th>
+        <th>Email</th>
+        <th>Giờ đi</th>
+        <th>Giờ Đến</th>
+        <th>Thao tác</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let vehicle of vehicles | paginate: {itemsPerPage: size, currentPage: page}, let i = index">
+        <td>{{(page - 1) * size + i + 1}}</td>
+        <td>{{vehicle.numberPalate}}</td>
+        <td>{{vehicle.name}}</td>
+        <td>{{vehicle.to.address}}</td>
+        <td>{{vehicle.from.address}}</td>
+        <td>{{vehicle.phone}}</td>
+        <td>{{vehicle.email}}</td>
+        <td>{{vehicle.startTime}}</td>
+        <td>{{vehicle.endTime}}</td>
+        <td class="d-flex justify-content-between">
+          <button class="btn bg text-light" [routerLink]="['edit',vehicle.id]">Sửa</button>
+          <button type="button" class="btn btn-primary bg" (click)="getInfo(vehicle)" data-bs-toggle="modal" data-bs-target="#deleteModal">
+            Xóa
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <pagination-controls previousLabel="Previous"
+                         nextLabel="Next"
+                         (pageChange)="page = $event" class="my-pagination" style="color: #00787b">
+    </pagination-controls>
+  </div>
+  <div *ngIf="deleteVehicle" class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg text-light">
+          <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-3">
+              Số xe:
+            </div>
+            <div class="col-lg-9">
+              {{deleteVehicle.numberPalate}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-3">
+              Nhà xe:
+            </div>
+            <div class="col-lg-9">
+              {{deleteVehicle.name}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-3">
+              phone:
+            </div>
+            <div class="col-lg-9">
+              {{deleteVehicle.phone}}
+            </div>
+          </div>
+          <h6 class="text-danger mt-2">Bạn có chắc chắn muốn xóa thông tin của xe khách này không??</h6>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button type="button" (click)="delete(deleteVehicle.id)"
+                  data-bs-dismiss="modal" class="btn bg text-light">Xóa</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
