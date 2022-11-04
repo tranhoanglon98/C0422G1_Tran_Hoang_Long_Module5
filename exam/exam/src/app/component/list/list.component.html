@@ -1,12 +1,12 @@
 <div class="position-relative">
   <div class="position-absolute w-100 d-flex justify-content-center bg-black bg-opacity-50" style="top: 40%">
-    <h1 class="text-center text-light">Quản lý vận tải Hoàng Long</h1>
+    <h1 class="text-center text-light">CodeGym Đà Nẵng</h1>
   </div>
   <img src="../../../assets/pexels-rompalli-harish-1698618 (1).png" width="100%"/>
 </div>
 
 <div class="mx-auto w-75 mt-5">
-  <h2 class="text-center" style="color: #00787b">Danh sách xe</h2>
+  <h2 class="text-center" style="color: #00787b">Danh sách học viên</h2>
   <div class="d-flex justify-content-center">
     <hr style="width: 110px; color: #00787b" class="m-1">
   </div>
@@ -14,89 +14,247 @@
     <hr style="width: 80px; color: #00787b" class="m-1">
   </div>
   <div class="d-flex justify-content-center mt-3">
-    <button class="btn bg rounded-pill text-light">Thêm mới xe</button>
+    <button class="btn bg rounded-pill text-light" routerLink="/add">Thêm mới học viên</button>
+  </div>
+  <div class="mt-5 row">
+    <div class="col-lg-4">
+      <button class="bg text-light btn">Top bị phạt</button>
+    </div>
+    <div class="col-lg-4">
+      <div class="row">
+        <div class="col-lg-8">
+          <input type="text" [(ngModel)]="classSearch" class="form-control">
+        </div>
+        <div class="col-lg-4">
+          <button class="bg text-light btn" (click)="searchClass()">Tìm kiếm</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 d-flex justify-content-end">
+      <button class="bg text-light btn">Chưa từng được thưởng</button>
+    </div>
   </div>
   <div class="mt-4" style="margin-bottom: 100px">
     <table class="table table-hover">
       <thead class="bg text-light">
       <tr>
         <th>#</th>
-        <th>Số xe</th>
-        <th>Nhà xe</th>
-        <th>Điểm đến</th>
-        <th>Điểm đi</th>
-        <th>Điện thoại</th>
+        <th>Tên</th>
+        <th>Ngày sinh</th>
         <th>Email</th>
-        <th>Giờ đi</th>
-        <th>Giờ Đến</th>
-        <th>Thao tác</th>
+        <th>CCCD</th>
+        <th>Điện thoại</th>
+        <th>Lớp</th>
+        <th>Chi tiết</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let vehicle of vehicles | paginate: {itemsPerPage: size, currentPage: page}, let i = index">
-        <td>{{(page - 1) * size + i + 1}}</td>
-        <td>{{vehicle.numberPalate}}</td>
-        <td>{{vehicle.name}}</td>
-        <td>{{vehicle.to.address}}</td>
-        <td>{{vehicle.from.address}}</td>
-        <td>{{vehicle.phone}}</td>
-        <td>{{vehicle.email}}</td>
-        <td>{{vehicle.startTime}}</td>
-        <td>{{vehicle.endTime}}</td>
+      <tr *ngFor="let student of students, let i = index">
+        <td>{{page * 5 + i + 1}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.dateOfBirth}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.idCard}}</td>
+        <td>{{student.phoneNumber}}</td>
+        <td>{{student.codeGymClass.name}}</td>
         <td class="d-flex justify-content-between">
-          <button class="btn bg text-light" [routerLink]="['edit',vehicle.id]">Sửa</button>
-          <button type="button" class="btn btn-primary bg" (click)="getInfo(vehicle)" data-bs-toggle="modal" data-bs-target="#deleteModal">
-            Xóa
+          <button class="btn" style="background: none; color: #00787b" (click)="findStudent(student.id)"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-sharp fa-solid fa-circle-info"></i>
           </button>
         </td>
       </tr>
       </tbody>
     </table>
-    <pagination-controls previousLabel="Previous"
-                         nextLabel="Next"
-                         (pageChange)="page = $event" class="my-pagination" style="color: #00787b">
-    </pagination-controls>
+    <div class="w-100 d-flex justify-content-center">
+      <button class="btn bg text-light" style="width: 80px" (click)="previous()" [disabled]="page == 0 ">Previous
+      </button>
+      <button class="btn bg text-light" style="width: 80px" (click)="next()" [disabled]="page == totalPage -1">Next
+      </button>
+    </div>
   </div>
-  <div *ngIf="deleteVehicle" class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div *ngIf="studentDetail" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg text-light">
-          <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Thông tin chi tiết</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="row">
             <div class="col-lg-3">
-              Số xe:
+              Tên:
             </div>
             <div class="col-lg-9">
-              {{deleteVehicle.numberPalate}}
+              {{studentDetail.name}}
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-3">
-              Nhà xe:
-            </div>
-            <div class="col-lg-9">
-              {{deleteVehicle.name}}
+          <div class="row" *ngIf="studentDetail.bonusPenaltyList != null">
+            <div *ngFor="let list of studentDetail.bonusPenaltyList">
+              <hr>
+              <div class="col-lg-12">
+                <div class="row">
+                  <div class="col-lg-3">
+                    Hình thức:
+                  </div>
+                  <div class="col-lg-9">
+                    {{list.type.type}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="row">
+                  <div class="col-lg-3">
+                    Lý do:
+                  </div>
+                  <div class="col-lg-9">
+                    {{list.reason.reason}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="row">
+                  <div class="col-lg-3">
+                    ngày xảy ra:
+                  </div>
+                  <div class="col-lg-9">
+                    {{list.date}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="row">
+                  <div class="col-lg-3">
+                    Trạng thái:
+                  </div>
+                  <div class="col-lg-9">
+                    <p *ngIf="list.status == false">Hoàn thành</p>
+                    <p *ngIf="list.status == true">Chưa hoàn thành</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-3">
-              phone:
-            </div>
-            <div class="col-lg-9">
-              {{deleteVehicle.phone}}
-            </div>
+          <div class="row" *ngIf="studentDetail.bonusPenaltyList.length == 0">
+            <h6><i>Chưa có thông tin thưởng phạt</i></h6>
+            <br>
           </div>
-          <h6 class="text-danger mt-2">Bạn có chắc chắn muốn xóa thông tin của xe khách này không??</h6>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-          <button type="button" (click)="delete(deleteVehicle.id)"
-                  data-bs-dismiss="modal" class="btn bg text-light">Xóa</button>
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">Hủy</button>
+            <button type="button"
+                    data-bs-dismiss="modal" class="btn bg text-light m-2" (click)="finish(studentDetail.id)">Hoàn thành
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<footer
+  class="text-center text-lg-start text-white"
+  style="background-color: #00787b">
+  <section
+    class="d-flex justify-content-between p-4"
+    style="background-color: rgba(0, 0, 0, 0.2)">
+    <div class="me-5">
+      <span>Get connected with us on social networks:</span>
+    </div>
+
+    <div>
+      <a href="" class="text-white me-4">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="text-white me-4">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="text-white me-4">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="text-white me-4">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="text-white me-4">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="text-white me-4">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </section>
+
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <div class="row mt-3">
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold">C0422G1</h6>
+          <hr
+            class="mb-4 mt-0 d-inline-block mx-auto"
+            style="width: 60px; background-color: #7c4dff; height: 2px"
+          />
+          <p>
+            Here you can use rows and columns to organize your footer
+            content. Lorem ipsum dolor sit amet, consectetur adipisicing
+            elit.
+          </p>
+        </div>
+
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold">Products</h6>
+          <hr
+            class="mb-4 mt-0 d-inline-block mx-auto"
+            style="width: 60px; background-color: #7c4dff; height: 2px"
+          />
+          <p>
+            <a href="#!" class="text-white">Spring Boot</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">Angular</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">BrandFlow</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">Bootstrap Angular</a>
+          </p>
+        </div>
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold">Useful links</h6>
+          <hr
+            class="mb-4 mt-0 d-inline-block mx-auto"
+            style="width: 60px; background-color: #7c4dff; height: 2px"
+          />
+          <p>
+            <a href="#!" class="text-white">Your Account</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">Become an Affiliate</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">Shipping Rates</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">Help</a>
+          </p>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold">Contact</h6>
+          <hr
+            class="mb-4 mt-0 d-inline-block mx-auto"
+            style="width: 60px; background-color: #7c4dff; height: 2px"
+          />
+          <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+          <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
+          <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div
+    class="text-center p-3"
+    style="background-color: rgba(0, 0, 0, 0.2)">© 2020 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">C0422G1- Tran Hoang Long</a>
+  </div>
+</footer>
+

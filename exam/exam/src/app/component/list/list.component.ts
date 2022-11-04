@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ExamService} from '../../service/exam.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
-import {IVehicle} from '../../model/i-vehicle';
-import {IAddress} from '../../model/i-address';
+import {IStudent} from '../../model/i-student';
 
 @Component({
   selector: 'app-list',
@@ -11,43 +10,70 @@ import {IAddress} from '../../model/i-address';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  vehicles: IVehicle[];
-  page = 1;
-  size = 4;
-  address: IAddress[];
-  deleteVehicle: IVehicle;
+  students: IStudent[];
+  page = 0;
+  studentDetail: IStudent;
+  totalPage = 0;
+  classSearch: string = "";
 
   constructor(private examService: ExamService, private router: Router) {
-    this.examService.getAllAddress().subscribe(next => {
-      this.address = next;
-    });
   }
 
   ngOnInit(): void {
-    this.examService.getAll().subscribe(data => {
-      this.vehicles = data;
+    this.examService.getAll(this.page,this.classSearch).subscribe(data => {
+      // @ts-ignore
+      this.students = data.content;
+      // @ts-ignore
+      this.totalPage = data.totalPages
     });
   }
 
-  search() {
-    this.ngOnInit();
+  next() {
+    this.page = this.page + 1;
+    this.examService.getAll(this.page,this.classSearch).subscribe(data => {
+      // @ts-ignore
+      this.students = data.content;
+      // @ts-ignore
+      this.totalPage = data.totalPages
+    });
   }
 
-  getInfo(vehicle: IVehicle) {
-    this.deleteVehicle = vehicle;
+  previous() {
+    this.page = this.page - 1;
+    this.examService.getAll(this.page,this.classSearch).subscribe(data => {
+      // @ts-ignore
+      this.students = data.content;
+      // @ts-ignore
+      this.totalPage = data.totalPages
+    });
   }
 
-  delete(id: number) {
-    this.examService.delete(id).subscribe(next => {
-      this.page = 1;
-      this.ngOnInit();
+  findStudent(id: number) {
+    this.examService.findStudent(id).subscribe(student => {
+      this.studentDetail = student;
+    })
+  }
+
+  finish(id: number) {
+    this.examService.finish(id).subscribe(ok => {
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Xóa thành công',
+        title: 'Cập nhật thông tin thành công',
         showConfirmButton: false,
         timer: 2000
       });
-    });
+    })
+  }
+
+  searchClass() {
+    this.page = 0;
+    alert(this.classSearch);
+    this.examService.getAll(this.page,this.classSearch).subscribe(students => {
+      // @ts-ignore
+      this.students = students.content
+      // @ts-ignore
+      this.totalPage = data.totalPages
+    })
   }
 }

@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ExamService} from '../../service/exam.service';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {ICustomerType} from '../../model/i-customer-type';
-import Swal from 'sweetalert2';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {date} from '../../service/dayValidate';
+import {IClass} from '../../model/i-class';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-add',
@@ -13,18 +12,22 @@ import {date} from '../../service/dayValidate';
 })
 export class AddComponent implements OnInit {
   addFrom: FormGroup;
-  customerTypes: ICustomerType[];
+  classes: IClass[];
 
   constructor(private examService: ExamService, private router: Router) {
-    this.examService.getAllCustomerType().subscribe(types => {
-      this.customerTypes = types;
+    this.examService.getAllClass().subscribe(classes => {
+      this.classes = classes;
     });
-
     this.addFrom = new FormGroup({
-      id: new FormControl(),
-      name: new FormControl(),
-      dayOfBirth: new FormControl('', [date]),
-      customerType: new FormControl(0)
+      name: new FormControl('', [Validators.required, Validators.pattern('[ a-zA-Z]+')]),
+      dateOfBirth: new FormControl('', Validators.required),
+      phoneNumber: new FormControl('', [Validators.required,
+        Validators.pattern('\\+\\(84\\)[0-9]{8}')]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      idCard: new FormControl('', Validators.required),
+      codeGymClass: new FormGroup({
+        id: new FormControl('')
+      },Validators.required)
     });
   }
 
@@ -33,14 +36,22 @@ export class AddComponent implements OnInit {
 
   add() {
     this.examService.add(this.addFrom.value).subscribe(next => {
-      this.router.navigateByUrl('');
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Add successfully',
+        title: 'Thêm mới học viên thành công thành công',
         showConfirmButton: false,
         timer: 2000
       });
-    });
+    },error => {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: error.error,
+        showConfirmButton: false,
+        timer: 2000
+      });
+    })
   }
 }
+
